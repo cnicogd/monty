@@ -11,10 +11,9 @@
 int main(int argc, char **argv)
 {
 char *line = NULL;
-size_t size_char = 0;
 size_t buf = 0;
 FILE *file = NULL;
-
+char *token = NULL;
 
 if (argc != 2)
 {
@@ -29,7 +28,7 @@ if (file == NULL)
 	exit(EXIT_FAILURE);
 }
 
-while ((getline(&line, &buf, STDIN_FILENO) != EOF && ++line_num);
+while ((getline(&line, &buf, STDIN_FILENO) != EOF))
 {
 	token = strtok(line, " ");
 	if (token != NULL)
@@ -37,7 +36,6 @@ while ((getline(&line, &buf, STDIN_FILENO) != EOF && ++line_num);
 		token = strtok(NULL, " ");
 	}
 }
-	}
 return (0);
 
 }
