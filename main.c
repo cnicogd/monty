@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "monty.h"
 /**
  * main - C - Stacks, Queues - LIFO, FIFO
  * @argc: Number of arguments
@@ -13,17 +13,31 @@ int main(int argc, char **argv)
 char *line = NULL;
 size_t size_char = 0;
 size_t buf = 0;
+FILE *file = NULL;
+
 
 if (argc != 2)
 {
-	fprintf(stdout, "USAGE: monty file");
-	exit(EXIT_SUCCESS);
+	fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
 }
 
-while ((getline(&line, &buf, STDIN_FILENO) != EOF);
+file = fopen(argv[1], "r");
+if (file == NULL)
 {
-	if (size_char == EOF)
-		exit(EXIT_SUCCESS);
+	fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+	exit(EXIT_FAILURE);
 }
+
+while ((getline(&line, &buf, STDIN_FILENO) != EOF && ++line_num);
+{
+	token = strtok(line, " ");
+	if (token != NULL)
+	{
+		token = strtok(NULL, " ");
+	}
+}
+	}
 return (0);
+
 }
