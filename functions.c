@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "monty.h"
 
 /**
  * functions - get the proper function.
@@ -6,24 +6,20 @@
  * Return: 0
  */
 
-int functions(unsigned int line_number)
+int functions(char *op, stack_t **stack, unsigned int line_number)
 {
-instruction_t ops_t[] = {
-	{"push", _push},
-	{"pall", _pall},
-	{"pint", _pint},
-	{"pop", _pop},
-	{NULL, NULL}
-};
+	instruction_t ops_t[] = {
+		{"push", _push},
+		{NULL, NULL}
+	};
 int i;
-char *opcode;
-for (i = 0; ops_[].opcode; i++)
+
+for (i = 0; ops_t[i].opcode != NULL; i++)
 {
-if (strcmp(ops_s[i].opcode, string))
-{
-	ops_s[i].f();
-	return (1);
-}
+	if (strcmp(ops_t[i].opcode, op) == 0)
+	{
+		ops_t[i].f(stack, line_number);
+	}
 }
 return (0);
 }
