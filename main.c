@@ -1,41 +1,40 @@
 #include "monty.h"
+global_t global;
+
+/* /\** */
+/*  * global_var - handle function for monty languege */
+/*  * @void: num of inputs int */
+/*  * Return: None */
+/*  *\/ */
+/* void global_var(void) */
+/* { */
+/*  global.num = NULL; */
+/*  global.headstack = NULL; */
+/*  global.line_number = 0; */
+/*     global.linecount = 1; */
+/*  global.gbuff = NULL; */
+
+/* } */
+
 /**
- * main - C - Stacks, Queues - LIFO, FIFO
- * @argc: Number of arguments
- * @argv: Array with arguments
- *
- * Return: 0
+ * main - handle function for monty languege
+ * @argc: num of inputs int
+ * @argv: code files char
+ * Return: None
  */
-
-
 int main(int argc, char **argv)
 {
-char *line = NULL;
-size_t buf = 0;
-FILE *file = NULL;
-char *token = NULL;
+	stack_t *headstack = NULL;
 
-if (argc != 2)
-{
-	fprintf(stderr, "USAGE: monty file\n");
-	exit(EXIT_FAILURE);
-}
+	global.headstack = &headstack;
 
-file = fopen(argv[1], "r");
-if (file == NULL)
-{
-	fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-	exit(EXIT_FAILURE);
-}
-
-while ((getline(&line, &buf, STDIN_FILENO) != EOF))
-{
-	token = strtok(line, " ");
-	if (token != NULL)
+	if (argc != 2)
 	{
-		token = strtok(NULL, " ");
+		fprintf(stderr, "USAGE: monty file\n");
+		error_fun(&headstack);
+		exit(EXIT_FAILURE);
 	}
-}
-return (0);
 
+	openfile(argv[1]);
+	return (0);
 }
